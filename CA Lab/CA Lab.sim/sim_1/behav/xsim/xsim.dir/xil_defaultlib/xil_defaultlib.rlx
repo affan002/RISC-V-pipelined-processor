@@ -1,0 +1,13 @@
+0.7
+2020.1
+May 27 2020
+20:09:33
+C:/Users/Noman Traders/Desktop/habib/CA/verilog_labs/CA Lab/CA Lab/CA Lab.sim/sim_1/behav/xsim/glbl.v,1740963678,verilog,,,,glbl,,,,,,,,
+C:/Users/Noman Traders/Desktop/habib/CA/verilog_labs/CA Lab/CA Lab/CA Lab.srcs/sim_1/new/DataMemory_Test.v,1740963697,verilog,,,,DataMemory_Test,,,,,,,,
+C:/Users/Noman Traders/Desktop/habib/CA/verilog_labs/CA Lab/CA Lab/CA Lab.srcs/sim_1/new/InstructionMemory_Test.v,1740963697,verilog,,,,InstructionMemory_Test,,,,,,,,
+C:/Users/Noman Traders/Desktop/habib/CA/verilog_labs/CA Lab/CA Lab/CA Lab.srcs/sim_1/new/top_control_tb.v,1742359875,verilog,,,,top_control_tb,,,,,,,,
+C:/Users/Noman Traders/Desktop/habib/CA/verilog_labs/CA Lab/CA Lab/CA Lab.srcs/sources_1/new/ALU_control.v,1742359900,verilog,,C:/Users/Noman Traders/Desktop/habib/CA/verilog_labs/CA Lab/CA Lab/CA Lab.srcs/sources_1/new/control_unit.v,,ALU_control,,,,,,,,
+C:/Users/Noman Traders/Desktop/habib/CA/verilog_labs/CA Lab/CA Lab/CA Lab.srcs/sources_1/new/Data_Memory.v,1740963697,verilog,,C:/Users/Noman Traders/Desktop/habib/CA/verilog_labs/CA Lab/CA Lab/CA Lab.srcs/sim_1/new/DataMemory_Test.v,,Data_Memory,,,,,,,,
+C:/Users/Noman Traders/Desktop/habib/CA/verilog_labs/CA Lab/CA Lab/CA Lab.srcs/sources_1/new/Instruction_Memory.v,1740963697,verilog,,C:/Users/Noman Traders/Desktop/habib/CA/verilog_labs/CA Lab/CA Lab/CA Lab.srcs/sim_1/new/InstructionMemory_Test.v,,Instruction_Memory,,,,,,,,
+C:/Users/Noman Traders/Desktop/habib/CA/verilog_labs/CA Lab/CA Lab/CA Lab.srcs/sources_1/new/control_unit.v,1742359715,verilog,,C:/Users/Noman Traders/Desktop/habib/CA/verilog_labs/CA Lab/CA Lab/CA Lab.srcs/sources_1/new/top_control.v,,control_unit,,,,,,,,
+C:/Users/Noman Traders/Desktop/habib/CA/verilog_labs/CA Lab/CA Lab/CA Lab.srcs/sources_1/new/top_control.v,1742359900,verilog,,C:/Users/Noman Traders/Desktop/habib/CA/verilog_labs/CA Lab/CA Lab/CA Lab.srcs/sim_1/new/top_control_tb.v,,top_control,,,,,,,,
