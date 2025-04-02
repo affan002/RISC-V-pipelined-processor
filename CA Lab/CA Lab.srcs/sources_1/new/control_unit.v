@@ -1,23 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 03/19/2025 09:48:19 AM
-// Design Name: 
-// Module Name: control_unit
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
 
 
 module control_unit(
@@ -31,45 +12,41 @@ module control_unit(
     output reg RegWrite
     );
     always@(*)begin
-        if(Opcode==7'b0110011)
-            begin
-            assign Branch=1'b0;
-            assign MemRead=1'b0;
-            assign MemtoReg=1'b0;
-            assign ALUOp=2'b10;
-            assign MemWrite=1'b0;
-            assign ALUSrc=1'b0;
-            assign RegWrite=1'b1;
-            end
-        else if(Opcode==7'b0000011)
-            begin
-            assign Branch=1'b0;
-            assign MemRead=1'b1;
-            assign MemtoReg=1'b1;
-            assign ALUOp=2'b00;
-            assign MemWrite=1'b0;
-            assign ALUSrc=1'b1;
-            assign RegWrite=1'b1;
-            end
-        else if(Opcode==7'b0100011)
-            begin
-            assign Branch=1'b0;
-            assign MemRead=1'b0;
-            assign MemtoReg=1'bx;
-            assign ALUOp=2'b00;
-            assign MemWrite=1'b1;
-            assign ALUSrc=1'b1;
-            assign RegWrite=1'b0;
-            end
-        else if(Opcode==7'b1100011)
-            begin
-            assign Branch=1'b1;
-            assign MemRead=1'b0;
-            assign MemtoReg=1'bx;
-            assign ALUOp=2'b01;
-            assign MemWrite=1'b0;
-            assign ALUSrc=1'b0;
-            assign RegWrite=1'b0;
-            end
+        if(Opcode==7'b0110011) begin
+            Branch = 1'b0;
+            MemRead = 1'b0;
+            MemtoReg = 1'b0;
+            ALUOp = 2'b10;
+            MemWrite = 1'b0;
+            ALUSrc = 1'b0;
+            RegWrite = 1'b1;
+        end
+        else if(Opcode==7'b0000011) begin
+            Branch = 1'b0;
+            MemRead = 1'b1;
+            MemtoReg = 1'b1;
+            ALUOp = 2'b00;
+            MemWrite = 1'b0;
+            ALUSrc = 1'b1;
+            RegWrite = 1'b1;
+        end
+        else if(Opcode==7'b0100011) begin
+            Branch = 1'b0;
+            MemRead = 1'b0;
+            MemtoReg = 1'bx;
+            ALUOp = 2'b00;
+            MemWrite = 1'b1;
+            ALUSrc = 1'b1;
+            RegWrite = 1'b0;
+        end
+        else if(Opcode==7'b1100011) begin
+            Branch = 1'b1;
+            MemRead = 1'b0;
+            MemtoReg = 1'bx;
+            ALUOp = 2'b01;
+            MemWrite = 1'b0;
+            ALUSrc = 1'b0;
+            RegWrite = 1'b0;
+        end
     end
 endmodule
