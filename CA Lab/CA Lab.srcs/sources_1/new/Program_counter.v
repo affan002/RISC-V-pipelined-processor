@@ -27,7 +27,7 @@ output reg [63:0] PC_Out
     );
     
 always @(posedge clk or posedge reset) begin
-if (reset)
+if (reset==1'b1)
     PC_Out <= 64'b0;
 else 
     PC_Out <= PC_In;

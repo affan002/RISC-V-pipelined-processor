@@ -3,76 +3,46 @@ module RISC_V_Processor(
     input clk,
     input reset
 );
-// wires for pc
-wire [63:0] pc_in;
-wire [63:0] pc_out;
-
-// wires for instruction memory 
-wire [31:0] instruction;
-wire [6:0] opcode;
-wire [4:0] rd;
-wire [2:0] func3;
-wire [4:0] rs1;
-wire [4:0] rs2;
-wire [6:0] func7;
-
-// wires for control_unit
-wire branch;
-wire mem_read;
-wire mem_to_reg;
-wire [1:0] alu_op;
-wire mem_write;
-wire alu_src;
-wire reg_write;
-
-// wire for immediate data extractor
-wire [63:0] imm;
-
-wire [63:0] rs1_data;
-wire [63:0] rs2_data;
-wire [63:0] next_ins_address;
-wire [63:0] branch_ins_address;
-
-// wire for ALU control 
-wire [3:0] operation;
-
-//select between rs1 and immediate
-wire [63:0] alu_second_operand;
-wire zero;
-wire carryOut;
-wire [63:0] alu_result;
-
-// data 
-wire [63:0] read_data;
-wire [63:0] write_data;
-
-Program_Counter PC (clk, reset, pc_in, pc_out);
-
-Instruction_Memory Instruction_Memory (pc_out, instruction);
-
-instruction_parser Instruction_Parser (instruction, opcode, rd, func3, rs1, rs2, func7);
-
-control_unit Control_Unit (opcode, branch, mem_read, mem_to_reg, alu_op, mem_write, alu_src, reg_write);
-
-registerFile Registers (write_data, rs1, rs2, rd, reg_write, clk, reset, rs1_data, rs2_data);
-
-immediate_data_extractor Immediate_DE (instruction, imm);
-
-Adder Adder (pc_out, 4, next_ins_address);
-
-Adder Branch_Adder (pc_out, imm << 1 , branch_ins_address);
-
-ALU_control ALU_control (alu_op, {instruction[30], instruction[14:12]}, operation);
-
-mux Register_mux (rs2_data, imm, alu_src, alu_second_operand);
-
-ALU_64_bit ALU (rs1_data, alu_second_operand, 0,operation, alu_result, carryOut, zero );
-
-mux PC_mux (next_ins_address, branch_ins_address, zero && branch, pc_in);
-
-Data_Memory Data_Memory (alu_result, rs2_data, clk, mem_write, mem_read, read_data);
-
-mux Writeback_mux (alu_result, read_data, mem_to_reg, write_data);
-
+    wire [63:0] PC_in, PC_out, ReadData, ReadData1, ReadData2, WriteData, ImmData, Result; 
+    wire [63:0] shifted_data, Data_Out, Out1, Out2;
+    wire [31:0] Instruction;
+    wire [6:0] opcode, func7; 
+    wire [2:0] func3;  
+    wire [4:0] RS1, RS2, RD;
+    wire [3:0] Operation, Funct;
+    wire [1:0] ALUOp;
+    wire RegWrite, MemRead, MemWrite, MemtoReg, ALUSrc, Zero, Branch, PCSrc, BranchSelect ; 
+    
+    wire [63:0] dm1, dm2, dm3, dm4, dm5;
+    
+    // IF
+    Adder fouradder(PC_out, 64'd4, Out1);
+    mux branch(Out1, Out2, (Branch & BranchSelect), PC_in);
+    Program_Counter PC(clk, reset, PC_in, PC_out);
+    Instruction_Memory IM(PC_out, Instruction); 
+    
+    // ID    
+    instruction_parser IP(Instruction, opcode, RD, func3, RS1, RS2, func7);
+    immediate_data_extractor IG(Instruction, ImmData);
+    control_unit CU(opcode, ALUOp, Branch, MemRead, MemtoReg, MemWrite, ALUSrc, RegWrite);
+    registerFile RF(WriteData, RS1, RS2, RD, RegWrite, clk, reset, ReadData1, ReadData2);
+    assign branchSelect = (func3 == 3'b000) ? Zero:
+                   (func3 == 3'b100) ? Result:
+                   1'b0;
+    
+    // EXE 
+    assign shifted_data = ImmData << 1;
+    Adder BRANCHADDER(PC_out, shifted_data, Out2); 
+    mux ALUSRC(ReadData2, ImmData, ALUSrc, Data_Out);
+    assign Funct = {Instruction[30],Instruction[14:12]};
+    ALU_control ALUC(ALUOp, Funct, Operation);
+    ALU_64_bit ALU(ReadData1, Data_Out, Operation, Result, Zero);
+    
+    // MEM
+    Data_Memory DM(Result, ReadData2, clk, MemWrite, MemRead, ReadData, dm1, dm2, dm3, dm4, dm5);
+    
+    // WB
+    mux WB(Result, ReadData, MemtoReg, WriteData);
+    
     
 endmodule

@@ -12,41 +12,59 @@ module control_unit(
     output reg RegWrite
     );
     always@(*)begin
-        if(Opcode==7'b0110011) begin
-            Branch = 1'b0;
-            MemRead = 1'b0;
-            MemtoReg = 1'b0;
+        if(Opcode==7'b0110011) begin // R type 
+            ALUSrc = 0;
+            MemtoReg = 0;
+            RegWrite = 1;
+            MemRead = 0;
+            MemWrite = 0;
+            Branch = 0;
             ALUOp = 2'b10;
-            MemWrite = 1'b0;
-            ALUSrc = 1'b0;
-            RegWrite = 1'b1;
         end
-        else if(Opcode==7'b0000011) begin
-            Branch = 1'b0;
-            MemRead = 1'b1;
-            MemtoReg = 1'b1;
+        else if(Opcode==7'b0000011) begin // I type
+            ALUSrc = 1;
+            MemtoReg = 1;
+            RegWrite = 1;
+            MemRead = 1;
+            MemWrite = 0;
+            Branch = 0;
             ALUOp = 2'b00;
-            MemWrite = 1'b0;
-            ALUSrc = 1'b1;
-            RegWrite = 1'b1;
         end
-        else if(Opcode==7'b0100011) begin
-            Branch = 1'b0;
-            MemRead = 1'b0;
+        else if(Opcode==7'b0100011) begin // s type (sd)
+            ALUSrc = 1;
             MemtoReg = 1'bx;
+            RegWrite = 0;
+            MemRead = 0;
+            MemWrite = 1;
+            Branch = 0;
             ALUOp = 2'b00;
-            MemWrite = 1'b1;
-            ALUSrc = 1'b1;
-            RegWrite = 1'b0;
         end
-        else if(Opcode==7'b1100011) begin
-            Branch = 1'b1;
-            MemRead = 1'b0;
+        else if(Opcode==7'b1100011) begin // sb type (beq)
+            ALUSrc = 0;
             MemtoReg = 1'bx;
+            RegWrite = 0;
+            MemRead = 0;
+            MemWrite = 0;
+            Branch = 1;
             ALUOp = 2'b01;
-            MemWrite = 1'b0;
-            ALUSrc = 1'b0;
-            RegWrite = 1'b0;
+        end
+        else if (Opcode==7'b0010011) begin //tentative implementation
+            ALUSrc = 1;
+            MemtoReg = 0;
+            RegWrite = 1;
+            MemRead = 0;
+            MemWrite = 0;
+            Branch = 0;
+            ALUOp = 2'b00;
+        end
+        else begin // the default case should be used in stalls too 
+            ALUSrc = 0;
+            MemtoReg = 0;
+            RegWrite = 0;
+            MemRead = 0;
+            MemWrite = 0;
+            Branch = 0;
+            ALUOp = 2'b00;
         end
     end
 endmodule

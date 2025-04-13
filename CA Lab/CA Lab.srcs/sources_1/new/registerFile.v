@@ -16,14 +16,13 @@ module registerFile(
     integer i;
     initial
     begin
-        for (i = 0; i < 32; i = i + 1) begin
-            array[i] = i + 1;
-        end
+    for (i = 0 ; i < 31 ; i = i + 1)
+        array[i] = 0;
     end
     
     always @(posedge Clk)
     begin
-        if (RegWrite)
+        if (RegWrite && RD != 5'b00000)
             array[RD] <= WriteData;
     end
     
@@ -31,8 +30,8 @@ module registerFile(
     begin
         if (Reset)
         begin
-            ReadData1 <= 0;
-            ReadData2 <= 0;
+            ReadData1 <= 64'b0;
+            ReadData2 <= 64'b0;
         end
         else
         begin

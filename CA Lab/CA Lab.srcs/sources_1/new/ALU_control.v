@@ -30,11 +30,18 @@ module ALU_control(
         
         if (ALUOp == 2'b00) 
         begin
-             Operation = 4'b0010;
+             case (Funct[2:0])
+                3'b001: Operation = 4'b1000; // SLLI
+                3'b000: Operation = 4'b0010; 
+             endcase
         end
         else if (ALUOp == 2'b01) 
         begin
-             Operation = 4'b0110;
+             case(Funct[2:0])  // Check funct3 field (instruction[14:12])
+                3'b000:  Operation = 4'b0110;  // BEQ - subtraction for Zero flag
+                3'b100:  Operation = 4'b0111;  // BLT - set operation for signed less than
+                default: Operation = 4'b0110;  // Default to subtraction
+            endcase
         end
         else if (ALUOp == 2'b10) 
         
