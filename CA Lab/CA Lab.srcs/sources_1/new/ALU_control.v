@@ -33,6 +33,7 @@ module ALU_control(
              case (Funct[2:0])
                 3'b001: Operation = 4'b1000; // SLLI
                 3'b000: Operation = 4'b0010; 
+                default: Operation = 4'b0010;
              endcase
         end
         else if (ALUOp == 2'b01) 
@@ -44,24 +45,15 @@ module ALU_control(
             endcase
         end
         else if (ALUOp == 2'b10) 
-        
         begin
-            if (Funct == 4'b0000)
-             begin
-                 Operation = 4'b0010;
-            end
-            else if (Funct == 4'b1000) 
-            begin
-                 Operation = 4'b0110;
-            end 
-            else if (Funct == 4'b0111)
-             begin
-               Operation = 4'b0000;
-            end 
-            else if (Funct == 4'b0110)
-             begin
-                Operation = 4'b0001;
-            end            
+            case (Funct)
+                4'b0000: Operation = 4'b0010; // ADD
+                4'b1000: Operation = 4'b0110; // SUB
+                4'b0111: Operation = 4'b0000; // AND
+                4'b0110: Operation = 4'b0001; // OR
+                // Add other R-type operations
+                default: Operation = 4'b0000; // Default operation
+            endcase
         end
-    end
+    end 
 endmodule

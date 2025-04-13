@@ -3,7 +3,8 @@ module ALU_64_bit(
     input [63:0] a, [63:0] b,
     input [3:0] ALUOp,
     output reg [63:0] Result,
-    output Zero
+    output Zero,
+    output lessThan
     );
    
 //        (ALUOp == 4'b0000) ? {1'b0, a & b} :           // AND operation
@@ -21,7 +22,6 @@ module ALU_64_bit(
            4'b0001: Result <= a|b;
            4'b0010: Result <= a+b;
            4'b0110: Result <= a-b;
-           4'b0111: Result <= (signed_a<signed_b) ? 1 : 0;
            4'b1100: Result <= ~a & ~b;
            4'b1000: Result <= a << b;
            default: Result <= 64'b0;
@@ -30,6 +30,8 @@ module ALU_64_bit(
     
     
     assign Zero = (Result == 0);
+    
+    assign lessThan = (signed_a < signed_b);
      
     
 endmodule

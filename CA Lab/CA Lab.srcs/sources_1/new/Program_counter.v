@@ -26,11 +26,22 @@ input [63:0] PC_In,
 output reg [63:0] PC_Out
     );
     
-always @(posedge clk or posedge reset) begin
-if (reset==1'b1)
-    PC_Out <= 64'b0;
-else 
-    PC_Out <= PC_In;
-end
+    reg pc_s;
+    always @(posedge clk or posedge reset) begin
+        if (~reset) begin
+            if (PC_In > 199) begin
+                PC_Out <= 0;
+            end else begin
+                if (~pc_s) begin
+                    PC_Out <= 0;
+                    pc_s <= 1;
+                end else begin
+                PC_Out <= PC_In; end
+            end
+        end else begin
+            pc_s <= 0;
+            PC_Out <= 0;
+        end
+    end
 
 endmodule

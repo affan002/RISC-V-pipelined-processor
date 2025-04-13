@@ -11,9 +11,9 @@ module RISC_V_Processor(
     wire [4:0] RS1, RS2, RD;
     wire [3:0] Operation, Funct;
     wire [1:0] ALUOp;
-    wire RegWrite, MemRead, MemWrite, MemtoReg, ALUSrc, Zero, Branch, PCSrc, BranchSelect ; 
+    wire RegWrite, MemRead, MemWrite, MemtoReg, ALUSrc, Zero, Branch, PCSrc, BranchSelect, lessThan ; 
     
-    wire [63:0] dm1, dm2, dm3, dm4, dm5;
+    wire [63:0] w0, w1, w2, w3, w4, w5, w6;
     
     // IF
     Adder fouradder(PC_out, 64'd4, Out1);
@@ -24,11 +24,9 @@ module RISC_V_Processor(
     // ID    
     instruction_parser IP(Instruction, opcode, RD, func3, RS1, RS2, func7);
     immediate_data_extractor IG(Instruction, ImmData);
-    control_unit CU(opcode, ALUOp, Branch, MemRead, MemtoReg, MemWrite, ALUSrc, RegWrite);
+    control_unit CU(opcode,Branch, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc, RegWrite);
     registerFile RF(WriteData, RS1, RS2, RD, RegWrite, clk, reset, ReadData1, ReadData2);
-    assign branchSelect = (func3 == 3'b000) ? Zero:
-                   (func3 == 3'b100) ? Result:
-                   1'b0;
+    
     
     // EXE 
     assign shifted_data = ImmData << 1;
@@ -36,10 +34,11 @@ module RISC_V_Processor(
     mux ALUSRC(ReadData2, ImmData, ALUSrc, Data_Out);
     assign Funct = {Instruction[30],Instruction[14:12]};
     ALU_control ALUC(ALUOp, Funct, Operation);
-    ALU_64_bit ALU(ReadData1, Data_Out, Operation, Result, Zero);
+    ALU_64_bit ALU(ReadData1, Data_Out, Operation, Result, Zero, lessThan);
+    Branch_unit branch_decision(func3, Zero, lessThan, BranchSelect);
     
     // MEM
-    Data_Memory DM(Result, ReadData2, clk, MemWrite, MemRead, ReadData, dm1, dm2, dm3, dm4, dm5);
+    Data_Memory DM(Result, ReadData2, clk, MemWrite, MemRead, ReadData, w0, w1, w2, w3, w4, w5, w6);
     
     // WB
     mux WB(Result, ReadData, MemtoReg, WriteData);

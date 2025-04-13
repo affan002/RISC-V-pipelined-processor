@@ -21,7 +21,7 @@ module control_unit(
             Branch = 0;
             ALUOp = 2'b10;
         end
-        else if(Opcode==7'b0000011) begin // I type
+        else if(Opcode==7'b0000011) begin // ld
             ALUSrc = 1;
             MemtoReg = 1;
             RegWrite = 1;
