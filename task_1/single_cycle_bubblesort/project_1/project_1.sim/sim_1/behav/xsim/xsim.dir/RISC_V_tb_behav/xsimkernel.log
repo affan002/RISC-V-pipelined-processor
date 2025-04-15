@@ -2,3 +2,6 @@ Running: xsim.dir/RISC_V_tb_behav/xsimk.exe -simmode gui -wdb RISC_V_tb_behav.wd
 Design successfully loaded
 Design Loading Memory Usage: 6628 KB (Peak: 6628 KB)
 Design Loading CPU Usage: 78 ms
+Simulation completed
+Simulation Memory Usage: 7460 KB (Peak: 7460 KB)
+Simulation CPU Usage: 93 ms
