@@ -21,15 +21,40 @@
 
 
 module Branch_unit(
-    input funct3,
-    input Zero,
-    input lessThan,
-    output branchSel
+    input [2:0] funct3,
+    input [63:0] ReadData1, ReadData2,
+    output reg branchSel
     );
     
-    assign branchSel = (funct3 == 3'b000) ? Zero:
-                       (funct3 == 3'b100) ? lessThan :
-                       1'b0;
+    initial
+    branchSel = 0;
+    
+    always @(*)
+        begin
+        case (funct3)
+            3'b000: // beq
+                begin
+                    if (ReadData1 == ReadData2)
+                        branchSel = 1;
+                    else
+                        branchSel = 0; 
+                end
+            3'b100: // blt
+                begin
+                    if (ReadData1 < ReadData2)
+                        branchSel = 1;
+                    else
+                        branchSel = 0;
+                end
+            3'b101: // bge
+                begin
+                    if (ReadData1 >= ReadData2)
+                        branchSel = 1;
+                    else
+                        branchSel = 0;
+                end
+            endcase
+        end   
     
    
 endmodule

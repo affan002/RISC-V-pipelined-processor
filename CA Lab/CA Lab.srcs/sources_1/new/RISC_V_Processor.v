@@ -11,9 +11,11 @@ module RISC_V_Processor(
     wire [4:0] RS1, RS2, RD;
     wire [3:0] Operation, Funct;
     wire [1:0] ALUOp;
-    wire RegWrite, MemRead, MemWrite, MemtoReg, ALUSrc, Zero, Branch, PCSrc, BranchSelect, lessThan ; 
+    wire RegWrite, MemRead, MemWrite, MemtoReg, ALUSrc, Zero, Branch, PCSrc, BranchSelect; 
     
-    wire [63:0] w0, w1, w2, w3, w4, w5, w6;
+    
+    
+    wire [63:0] w0, w1, w2, w3, w4, w5, w6, w7, w8, w9;
     
     // IF
     Adder fouradder(PC_out, 64'd4, Out1);
@@ -26,6 +28,7 @@ module RISC_V_Processor(
     immediate_data_extractor IG(Instruction, ImmData);
     control_unit CU(opcode,Branch, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc, RegWrite);
     registerFile RF(WriteData, RS1, RS2, RD, RegWrite, clk, reset, ReadData1, ReadData2);
+    Branch_unit branchDecision(func3, ReadData1, ReadData2, BranchSelect);
     
     
     // EXE 
@@ -34,11 +37,11 @@ module RISC_V_Processor(
     mux ALUSRC(ReadData2, ImmData, ALUSrc, Data_Out);
     assign Funct = {Instruction[30],Instruction[14:12]};
     ALU_control ALUC(ALUOp, Funct, Operation);
-    ALU_64_bit ALU(ReadData1, Data_Out, Operation, Result, Zero, lessThan);
-    Branch_unit branch_decision(func3, Zero, lessThan, BranchSelect);
+    ALU_64_bit ALU(ReadData1, Data_Out, Operation, Result, Zero);
+    
     
     // MEM
-    Data_Memory DM(Result, ReadData2, clk, MemWrite, MemRead, ReadData, w0, w1, w2, w3, w4, w5, w6);
+    Data_Memory DM(Result, ReadData2, clk, MemWrite, MemRead, ReadData, w0, w1, w2, w3, w4, w5, w6, w7, w8, w9);
     
     // WB
     mux WB(Result, ReadData, MemtoReg, WriteData);

@@ -48,7 +48,7 @@ module control_unit(
             Branch = 1;
             ALUOp = 2'b01;
         end
-        else if (Opcode==7'b0010011) begin //tentative implementation
+        else if (Opcode==7'b0010011) begin //tentative implementation for addi
             ALUSrc = 1;
             MemtoReg = 0;
             RegWrite = 1;

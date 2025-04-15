@@ -26,7 +26,3 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Noman Traders/Desktop/habi
 INFO: [VRFC 10-311] analyzing module registerFile
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Noman Traders/Desktop/habib/CA/RISC-V-pipelined-processor/CA Lab/CA Lab.srcs/sim_1/new/RISC_V_tb.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module RISC_V_tb
-WARNING: [VRFC 10-3248] data object 'clk' is already declared [C:/Users/Noman Traders/Desktop/habib/CA/RISC-V-pipelined-processor/CA Lab/CA Lab.srcs/sim_1/new/RISC_V_tb.v:9]
-WARNING: [VRFC 10-3703] second declaration of 'clk' ignored [C:/Users/Noman Traders/Desktop/habib/CA/RISC-V-pipelined-processor/CA Lab/CA Lab.srcs/sim_1/new/RISC_V_tb.v:9]
-WARNING: [VRFC 10-3248] data object 'reset' is already declared [C:/Users/Noman Traders/Desktop/habib/CA/RISC-V-pipelined-processor/CA Lab/CA Lab.srcs/sim_1/new/RISC_V_tb.v:10]
-WARNING: [VRFC 10-3703] second declaration of 'reset' ignored [C:/Users/Noman Traders/Desktop/habib/CA/RISC-V-pipelined-processor/CA Lab/CA Lab.srcs/sim_1/new/RISC_V_tb.v:10]

@@ -1,10 +1,6 @@
 `timescale 1ns / 1ps
 
 module RISC_V_tb();
-    reg clk, reset;
-    
-    RISC_V_Processor u1(clk, reset);
-    
     // Inputs
     reg clk;
     reg reset;
@@ -15,6 +11,12 @@ module RISC_V_tb();
         .reset(reset)
     );
     
+    // Clock generation
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk; // 10ns clock period
+    end
+    
     // Test sequence
     initial begin
         // Initialize with reset
@@ -22,14 +24,21 @@ module RISC_V_tb();
         #20; // Hold reset for 20ns
         reset = 0;
         
-        // Run simulation for a sufficiently long time
-        #200;
-    end
-    
-    // Clock generation
-    initial begin
-        clk = 0;
-        forever #5 clk = ~clk; // 10ns clock period
+        #5000;
+        
+        $display("Final memory state:");
+        $display("Memory[0] = %d", uut.DM.DataMemory[0]);
+        $display("Memory[8] = %d", uut.DM.DataMemory[8]);
+        $display("Memory[16] = %d", uut.DM.DataMemory[16]);
+        $display("Memory[24] = %d", uut.DM.DataMemory[24]);
+        $display("Memory[32] = %d", uut.DM.DataMemory[32]);
+        $display("Memory[40] = %d", uut.DM.DataMemory[40]);
+        $display("Memory[48] = %d", uut.DM.DataMemory[48]);
+        $display("Memory[56] = %d", uut.DM.DataMemory[56]);
+        $display("Memory[64] = %d", uut.DM.DataMemory[64]);
+        $display("Memory[72] = %d", uut.DM.DataMemory[72]);
+        
+        $finish;
     end
     
     // Monitor all wires within the processor (these will be available in waveform)
@@ -51,7 +60,7 @@ module RISC_V_tb();
     wire [63:0] readdata1 = uut.ReadData1;
     wire [63:0] readdata2 = uut.ReadData2;
     
-    // Control signals
+//     Control signals
     wire branch = uut.Branch;
     wire memread = uut.MemRead;
     wire memtoreg = uut.MemtoReg;
@@ -69,7 +78,6 @@ module RISC_V_tb();
     wire [3:0] operation = uut.Operation;
     wire [63:0] result = uut.Result;
     wire zero = uut.Zero;
-    wire lessthan = uut.lessThan;
     
     // MEM stage wires
     wire [63:0] readdata = uut.ReadData;
@@ -82,9 +90,31 @@ module RISC_V_tb();
     wire [63:0] mem_w4 = uut.w4;
     wire [63:0] mem_w5 = uut.w5;
     wire [63:0] mem_w6 = uut.w6;
+    wire [63:0] mem_w7 = uut.w7;
+    wire [63:0] mem_w8 = uut.w8;
+    wire [63:0] mem_w9 = uut.w9;
     
     // WB stage wires
     wire [63:0] writedata = uut.WriteData;
+    
+    // Register file monitoring
+    wire [63:0] reg_x0 = uut.RF.array[0];
+    wire [63:0] reg_x1 = uut.RF.array[1];
+    wire [63:0] reg_x2 = uut.RF.array[2];
+    wire [63:0] reg_x3 = uut.RF.array[3];
+    wire [63:0] reg_x4 = uut.RF.array[4];
+//    wire [63:0] reg_x5 = uut.RF.array[5];
+    wire [63:0] reg_x6 = uut.RF.array[6];
+    wire [63:0] reg_x7 = uut.RF.array[7];
+//    wire [63:0] reg_x8 = uut.RF.array[8];
+//    wire [63:0] reg_x9 = uut.RF.array[9];
+//    wire [63:0] reg_x10 = uut.RF.array[10];
+//    wire [63:0] reg_x18 = uut.RF.array[18];
+//    wire [63:0] reg_x19 = uut.RF.array[19];
+//    wire [63:0] reg_x28 = uut.RF.array[28];
+//    wire [63:0] reg_x29 = uut.RF.array[29];
+//    wire [63:0] reg_x30 = uut.RF.array[30];
+//    wire [63:0] reg_x31 = uut.RF.array[31];
     
     // Component-specific wires
     // ALU Control
@@ -96,6 +126,8 @@ module RISC_V_tb();
     wire dm_memwrite = uut.DM.MemWrite;
     
     // Branch Unit
-    wire branch_unit_out = uut.branch_decision.branchSel;
+    wire branch_unit_out = uut.branchDecision.branchSel;
     
+    
+
 endmodule

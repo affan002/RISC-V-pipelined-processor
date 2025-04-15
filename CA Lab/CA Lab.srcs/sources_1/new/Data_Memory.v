@@ -8,23 +8,26 @@ module Data_Memory(
     output reg [63:0] ReadData,
     
     // outputs for waveform display
-    output [63:0] w0, w1, w2, w3, w4, w5, w6
+    output [63:0] w0, w1, w2, w3, w4, w5, w6, w7, w8, w9
     );
     
-    reg [7:0] DataMemory [63:0];
+    reg [7:0] DataMemory [99:0];
     
     integer i;
     initial
     begin
-        for (i = 0; i < 64; i = i + 1)
+        for (i = 0; i < 100; i = i + 1)
             DataMemory[i] = 0;
-        DataMemory[0] = 8'b00011000; // 24 in decimal
-        DataMemory[8] = 8'b00101000; // 40 in decimal
-        DataMemory[16] = 8'b00110000; // 48 in decimal
-        DataMemory[24] = 8'b00111000; // 56 in decimal
-        DataMemory[32] = 8'b01000000; // 64 in decimal
-        DataMemory[40] = 8'b01001000; // 72 in decimal
-        DataMemory[48] = 8'b01010000; // 80 in decimal
+        DataMemory[0] = 10; //7 in decimal
+        DataMemory[8] = 9; // 6 in decimal
+        DataMemory[16] = 8; // 5 in decimal
+        DataMemory[24] = 7; // 4 in decimal
+        DataMemory[32] = 6; // 3 in decimal
+        DataMemory[40] = 5; // 2 in decimal
+        DataMemory[48] = 4; // 1 in decimal
+        DataMemory[56] = 3;
+        DataMemory[64] = 2;
+        DataMemory[72] = 1;
     end
     
     
@@ -36,6 +39,9 @@ module Data_Memory(
     assign w4 = {DataMemory[39], DataMemory[38], DataMemory[37], DataMemory[36], DataMemory[35], DataMemory[34], DataMemory[33], DataMemory[32]};
     assign w5 = {DataMemory[47], DataMemory[46], DataMemory[45], DataMemory[44], DataMemory[43], DataMemory[42], DataMemory[41], DataMemory[40]};
     assign w6 = {DataMemory[55], DataMemory[54], DataMemory[53], DataMemory[52], DataMemory[51], DataMemory[50], DataMemory[49], DataMemory[48]};
+    assign w7 = {DataMemory[63], DataMemory[62], DataMemory[61], DataMemory[60], DataMemory[59], DataMemory[58], DataMemory[57], DataMemory[56]};
+    assign w8 = {DataMemory[71], DataMemory[70], DataMemory[69], DataMemory[68], DataMemory[67], DataMemory[66], DataMemory[65], DataMemory[64]};
+    assign w9 = {DataMemory[79], DataMemory[78], DataMemory[77], DataMemory[76], DataMemory[75], DataMemory[74], DataMemory[73], DataMemory[72]};
     
     always @ (posedge clk)
     begin
