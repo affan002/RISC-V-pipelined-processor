@@ -1,61 +1,67 @@
-# Bubble Sort for 7 elements stored at 8-byte intervals
-# Starting at memory address 0
-# Register usage:
-# x18: Base address (0)
-# x19: Array length (7) 
-# x8: i (outer loop counter)
-# x9: j (inner loop counter)
-# x10: Current element address
-# x11: Next element address
-# x14, x15: Values for comparison
-# x20: Swap flag
 
-# Initialize
-addi x18, x0, 0        # Base address = 0
-addi x19, x0, 7        # Array length = 7
-addi x8, x0, 0         # i = 0
-
-outer_loop:
-    addi x20, x0, 0        # Reset swap flag
-    beq x8, x19, done      # If i == length, exit (array is sorted)
+# Initialize base address and array size
+addi x5, x0, 256      # x5 = base address (256)
+addi x6, x0, 7        # x6 = array size (7)
     
-    addi x9, x0, 0         # j = 0
-    sub x21, x19, x8       # length - i
-    addi x21, x21, -1      # length - i - 1 (inner loop bound)
+# Outer loop (i goes from 0 to n-1)
+addi x8, x0, 0        # x8 = i = 0
+outer_loop:
+    # Check if outer loop is done
+    beq x8, x6, done      # If i == size, we're done
+    
+    # Initialize inner loop
+    addi x5, x0, 256      # Reset base address to 256
+    
+    # Calculate size-i-1 without using sub
+    addi x9, x6, 0        # x9 = size
+    addi x15, x0, 0       # x15 = counter for subtracting
+subtract_loop:
+    beq x15, x8, subtract_done  # If counter == i, done subtracting
+    addi x9, x9, -1       # Decrement x9 (equivalent to subtracting 1)
+    addi x15, x15, 1      # Increment counter
+    beq x0, x0, subtract_loop   # Loop back
+    
+subtract_done:
+    addi x9, x9, -1       # x9 = (size-i)-1
+    addi x10, x0, 0       # x10 = j = 0 (inner loop counter)
     
 inner_loop:
-    beq x9, x21, inner_done # If j == bound, exit inner loop
+    # Check if inner loop is done
+    beq x10, x9, inner_done  # If j == (size-i-1), inner loop done
     
-    # Calculate address of a[j]
-    slli x10, x9, 3        # j * 8 (byte offset)
-    add x10, x10, x18      # base + j*8
+    # Calculate addresses for current and next elements
+    # Current element at address (base + j*4)
+    slli x11, x10, 2      # x11 = j * 4
+    add x11, x5, x11      # x11 = base + j*4 (address of current element)
     
-    # Calculate address of a[j+1]
-    addi x22, x9, 1        # j + 1
-    slli x11, x22, 3       # (j+1) * 8
-    add x11, x11, x18      # base + (j+1)*8
+    # Next element at address (base + (j+1)*4)
+    addi x12, x10, 1      # x12 = j + 1
+    slli x12, x12, 2      # x12 = (j+1) * 4
+    add x12, x5, x12      # x12 = base + (j+1)*4 (address of next element)
     
-    # Load values
-    ld x14, 0(x10)         # Load a[j]
-    ld x15, 0(x11)         # Load a[j+1]
+    # Load the two elements to compare
+    lw x13, 0(x11)        # x13 = current element
+    lw x14, 0(x12)        # x14 = next element
     
     # Compare and swap if needed
-    blt x15, x14, swap     # If a[j+1] < a[j], swap
-    
-continue_loop:
-    addi x9, x9, 1         # j++
-    beq x0, x0, inner_loop # Continue inner loop
+    blt x14, x13, swap    # If next < current, swap (equivalent to current >= next)
+    beq x0, x0, continue  # Unconditional branch to continue
     
 swap:
-    sd x15, 0(x10)         # a[j] = a[j+1]
-    sd x14, 0(x11)         # a[j+1] = a[j]
-    addi x20, x0, 1        # Set swap flag (a swap occurred)
-    beq x0, x0, continue_loop
+    # Swap the elements
+    sw x14, 0(x11)        # Store next at current position
+    sw x13, 0(x12)        # Store current at next position
+    
+continue:
+    # Increment inner loop counter and continue
+    addi x10, x10, 1      # j++
+    beq x0, x0, inner_loop  # Unconditional branch to inner_loop
     
 inner_done:
-    beq x20, x0, done      # If no swaps occurred, we're done
-    addi x8, x8, 1         # i++
-    beq x0, x0, outer_loop # Continue outer loop
+    # Increment outer loop counter and continue
+    addi x8, x8, 1        # i++
+    beq x0, x0, outer_loop  # Unconditional branch to outer_loop
     
 done:
-    # Program is complete - array is sorted
+    # End of sort
+    addi x0, x0, 0        # NOP (placeholder for end)
