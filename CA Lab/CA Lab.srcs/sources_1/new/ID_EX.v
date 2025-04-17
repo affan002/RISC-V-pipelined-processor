@@ -22,7 +22,7 @@
 
 module ID_EX(
     input clk, reset,
-    input RegWrite, MemToReg, Branch, MemWrite, MemRead, ALUsrc, // control signals
+    input RegWrite, MemToReg, Branch, MemWrite, MemRead, ALUsrc,  // control signals
     input [1:0] ALUop,
     input [63:0] IF_ID_PC_out, ReadData1, ReadData2, ImmData,
     input [3:0] Funct,

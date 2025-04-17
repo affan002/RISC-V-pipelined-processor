@@ -1,0 +1,26 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../CA Lab.srcs/sources_1/new/ALU_64_bit.v" \
+"../../../../CA Lab.srcs/sources_1/new/ALU_control.v" \
+"../../../../CA Lab.srcs/sources_1/new/Adder.v" \
+"../../../../CA Lab.srcs/sources_1/new/Branch_unit.v" \
+"../../../../CA Lab.srcs/sources_1/new/Data_Memory.v" \
+"../../../../CA Lab.srcs/sources_1/new/EX_MEM.v" \
+"../../../../CA Lab.srcs/sources_1/new/ID_EX.v" \
+"../../../../CA Lab.srcs/sources_1/new/IF_ID.v" \
+"../../../../CA Lab.srcs/sources_1/new/Instruction_Memory.v" \
+"../../../../CA Lab.srcs/sources_1/new/MEM_WB.v" \
+"../../../../CA Lab.srcs/sources_1/new/Program_counter.v" \
+"../../../../CA Lab.srcs/sources_1/new/RISC_V_Processor_Pipelined.v" \
+"../../../../CA Lab.srcs/sources_1/new/control_unit.v" \
+"../../../../CA Lab.srcs/sources_1/new/immediate_data_extractor.v" \
+"../../../../CA Lab.srcs/sources_1/new/instruction_parser.v" \
+"../../../../CA Lab.srcs/sources_1/new/mux.v" \
+"../../../../CA Lab.srcs/sources_1/new/registerFile.v" \
+"../../../../CA Lab.srcs/sim_1/new/RISC_V_PIPELINED_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

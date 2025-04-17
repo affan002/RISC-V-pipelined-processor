@@ -24,8 +24,8 @@ module IF_ID(
 input clk, reset,
     input [31:0] Instr,
     input [63:0] PC_OUT_IN,
-    output reg IF_ID_instruction_out,
-    output reg IF_ID_pc_out
+    output reg [31:0] IF_ID_instruction_out,
+    output reg [63:0] IF_ID_pc_out
     ); 
     
     always @(posedge clk or posedge reset) begin

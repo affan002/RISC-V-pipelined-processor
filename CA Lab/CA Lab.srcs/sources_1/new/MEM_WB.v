@@ -21,20 +21,15 @@
 
 
 module MEM_WB(
-input clk, reset,
-    // Control signals from EX/MEM stage
-    input EX_MEM_RegWrite, EX_MEM_MemToReg,
-    // Data values from memory stage
-    input [63:0] ReadData, EX_MEM_ALU_result,
-    // Destination register
-    input [4:0] EX_MEM_RD,
-    
-    // Control signals passed to Writeback stage
-    output reg MEM_WB_RegWrite, MEM_WB_MemToReg,
-    // Data values passed to Writeback stage
-    output reg [63:0] MEM_WB_ReadData, MEM_WB_ALU_result,
-    // Destination register passed to Writeback stage
-    output reg [4:0] MEM_WB_RD
+    input clk, reset,
+    input EX_MEM_RegWrite, EX_MEM_MemToReg, // 1 bit
+    input [4:0] EX_MEM_RD, // 5 bits
+    input [63:0] ReadData, EX_MEM_ALU_Result, // 64 bits
+
+//outputs
+    output reg MEM_WB_RegWrite, MEM_WB_MemToReg, // 1 bit
+    output reg [4:0] MEM_WB_RD, //  5 bits
+    output reg [63:0] MEM_WB_ReadData, MEM_WB_ALU_Result // 64 bits
 );
 
     always @(posedge clk or posedge reset) begin
@@ -44,7 +39,7 @@ input clk, reset,
             MEM_WB_MemToReg <= 0;
             
             MEM_WB_ReadData <= 64'b0;
-            MEM_WB_ALU_result <= 64'b0;
+            MEM_WB_ALU_Result <= 64'b0;
             
             MEM_WB_RD <= 5'b0;
         end
@@ -54,7 +49,7 @@ input clk, reset,
             MEM_WB_MemToReg <= EX_MEM_MemToReg;
             
             MEM_WB_ReadData <= ReadData;
-            MEM_WB_ALU_result <= EX_MEM_ALU_result;
+            MEM_WB_ALU_Result <= EX_MEM_ALU_Result;
             
             MEM_WB_RD <= EX_MEM_RD;
         end
