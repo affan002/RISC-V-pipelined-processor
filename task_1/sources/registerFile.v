@@ -17,7 +17,7 @@ module registerFile(
     initial
     begin
     for (i = 0 ; i < 32 ; i = i + 1)
-        array[i] = 0;
+        array[i] = i;
     end
     
     always @(posedge Clk)

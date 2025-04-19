@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="RISC_V_PIPELINED_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="RISC_V_PIPELINED_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="120401fs"></ZoomEndTime>
+      <Cursor1Time time="39900fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="256"></NameColumnWidth>
+      <ValueColumnWidth column_width="122"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="86" />
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/pc_in" type="array">
+      <obj_property name="ElementShortName">pc_in[63:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_in[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/pc_out" type="array">
+      <obj_property name="ElementShortName">pc_out[63:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_out[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/out1" type="array">
+      <obj_property name="ElementShortName">out1[63:0]</obj_property>
+      <obj_property name="ObjectShortName">out1[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/instruction" type="array">
+      <obj_property name="ElementShortName">instruction[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instruction[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/if_id_pc_out" type="array">
+      <obj_property name="ElementShortName">if_id_pc_out[63:0]</obj_property>
+      <obj_property name="ObjectShortName">if_id_pc_out[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/if_id_instruction" type="array">
+      <obj_property name="ElementShortName">if_id_instruction[31:0]</obj_property>
+      <obj_property name="ObjectShortName">if_id_instruction[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/opcode" type="array">
+      <obj_property name="ElementShortName">opcode[6:0]</obj_property>
+      <obj_property name="ObjectShortName">opcode[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/rd" type="array">
+      <obj_property name="ElementShortName">rd[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rd[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/func3" type="array">
+      <obj_property name="ElementShortName">func3[2:0]</obj_property>
+      <obj_property name="ObjectShortName">func3[2:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/rs1" type="array">
+      <obj_property name="ElementShortName">rs1[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rs1[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/rs2" type="array">
+      <obj_property name="ElementShortName">rs2[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rs2[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/func7" type="array">
+      <obj_property name="ElementShortName">func7[6:0]</obj_property>
+      <obj_property name="ObjectShortName">func7[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/immdata" type="array">
+      <obj_property name="ElementShortName">immdata[63:0]</obj_property>
+      <obj_property name="ObjectShortName">immdata[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/readdata1" type="array">
+      <obj_property name="ElementShortName">readdata1[63:0]</obj_property>
+      <obj_property name="ObjectShortName">readdata1[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/readdata2" type="array">
+      <obj_property name="ElementShortName">readdata2[63:0]</obj_property>
+      <obj_property name="ObjectShortName">readdata2[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/branch" type="logic">
+      <obj_property name="ElementShortName">branch</obj_property>
+      <obj_property name="ObjectShortName">branch</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/memread" type="logic">
+      <obj_property name="ElementShortName">memread</obj_property>
+      <obj_property name="ObjectShortName">memread</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/memtoreg" type="logic">
+      <obj_property name="ElementShortName">memtoreg</obj_property>
+      <obj_property name="ObjectShortName">memtoreg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/aluop" type="array">
+      <obj_property name="ElementShortName">aluop[1:0]</obj_property>
+      <obj_property name="ObjectShortName">aluop[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/memwrite" type="logic">
+      <obj_property name="ElementShortName">memwrite</obj_property>
+      <obj_property name="ObjectShortName">memwrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/alusrc" type="logic">
+      <obj_property name="ElementShortName">alusrc</obj_property>
+      <obj_property name="ObjectShortName">alusrc</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/regwrite" type="logic">
+      <obj_property name="ElementShortName">regwrite</obj_property>
+      <obj_property name="ObjectShortName">regwrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/branchselect" type="logic">
+      <obj_property name="ElementShortName">branchselect</obj_property>
+      <obj_property name="ObjectShortName">branchselect</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/id_ex_regwrite" type="logic">
+      <obj_property name="ElementShortName">id_ex_regwrite</obj_property>
+      <obj_property name="ObjectShortName">id_ex_regwrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/id_ex_memtoreg" type="logic">
+      <obj_property name="ElementShortName">id_ex_memtoreg</obj_property>
+      <obj_property name="ObjectShortName">id_ex_memtoreg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/id_ex_branch" type="logic">
+      <obj_property name="ElementShortName">id_ex_branch</obj_property>
+      <obj_property name="ObjectShortName">id_ex_branch</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/id_ex_memwrite" type="logic">
+      <obj_property name="ElementShortName">id_ex_memwrite</obj_property>
+      <obj_property name="ObjectShortName">id_ex_memwrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/id_ex_memread" type="logic">
+      <obj_property name="ElementShortName">id_ex_memread</obj_property>
+      <obj_property name="ObjectShortName">id_ex_memread</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/id_ex_alusrc" type="logic">
+      <obj_property name="ElementShortName">id_ex_alusrc</obj_property>
+      <obj_property name="ObjectShortName">id_ex_alusrc</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/id_ex_aluop" type="array">
+      <obj_property name="ElementShortName">id_ex_aluop[1:0]</obj_property>
+      <obj_property name="ObjectShortName">id_ex_aluop[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/id_ex_pc_out" type="array">
+      <obj_property name="ElementShortName">id_ex_pc_out[63:0]</obj_property>
+      <obj_property name="ObjectShortName">id_ex_pc_out[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/id_ex_readdata1" type="array">
+      <obj_property name="ElementShortName">id_ex_readdata1[63:0]</obj_property>
+      <obj_property name="ObjectShortName">id_ex_readdata1[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/id_ex_readdata2" type="array">
+      <obj_property name="ElementShortName">id_ex_readdata2[63:0]</obj_property>
+      <obj_property name="ObjectShortName">id_ex_readdata2[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/id_ex_immdata" type="array">
+      <obj_property name="ElementShortName">id_ex_immdata[63:0]</obj_property>
+      <obj_property name="ObjectShortName">id_ex_immdata[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/id_ex_funct" type="array">
+      <obj_property name="ElementShortName">id_ex_funct[3:0]</obj_property>
+      <obj_property name="ObjectShortName">id_ex_funct[3:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/id_ex_rd" type="array">
+      <obj_property name="ElementShortName">id_ex_rd[4:0]</obj_property>
+      <obj_property name="ObjectShortName">id_ex_rd[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/shifted_data" type="array">
+      <obj_property name="ElementShortName">shifted_data[63:0]</obj_property>
+      <obj_property name="ObjectShortName">shifted_data[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/adder_out" type="array">
+      <obj_property name="ElementShortName">adder_out[63:0]</obj_property>
+      <obj_property name="ObjectShortName">adder_out[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/data_out" type="array">
+      <obj_property name="ElementShortName">data_out[63:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/operation" type="array">
+      <obj_property name="ElementShortName">operation[3:0]</obj_property>
+      <obj_property name="ObjectShortName">operation[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/alu_result" type="array">
+      <obj_property name="ElementShortName">alu_result[63:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_result[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/zero" type="logic">
+      <obj_property name="ElementShortName">zero</obj_property>
+      <obj_property name="ObjectShortName">zero</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/ex_mem_regwrite" type="logic">
+      <obj_property name="ElementShortName">ex_mem_regwrite</obj_property>
+      <obj_property name="ObjectShortName">ex_mem_regwrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/ex_mem_memtoreg" type="logic">
+      <obj_property name="ElementShortName">ex_mem_memtoreg</obj_property>
+      <obj_property name="ObjectShortName">ex_mem_memtoreg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/ex_mem_branch" type="logic">
+      <obj_property name="ElementShortName">ex_mem_branch</obj_property>
+      <obj_property name="ObjectShortName">ex_mem_branch</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/ex_mem_memwrite" type="logic">
+      <obj_property name="ElementShortName">ex_mem_memwrite</obj_property>
+      <obj_property name="ObjectShortName">ex_mem_memwrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/ex_mem_memread" type="logic">
+      <obj_property name="ElementShortName">ex_mem_memread</obj_property>
+      <obj_property name="ObjectShortName">ex_mem_memread</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/ex_mem_zero" type="logic">
+      <obj_property name="ElementShortName">ex_mem_zero</obj_property>
+      <obj_property name="ObjectShortName">ex_mem_zero</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/ex_mem_rd" type="array">
+      <obj_property name="ElementShortName">ex_mem_rd[4:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_mem_rd[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/ex_mem_adder_out" type="array">
+      <obj_property name="ElementShortName">ex_mem_adder_out[63:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_mem_adder_out[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/ex_mem_alu_result" type="array">
+      <obj_property name="ElementShortName">ex_mem_alu_result[63:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_mem_alu_result[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/ex_mem_readdata2" type="array">
+      <obj_property name="ElementShortName">ex_mem_readdata2[63:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_mem_readdata2[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/readdata" type="array">
+      <obj_property name="ElementShortName">readdata[63:0]</obj_property>
+      <obj_property name="ObjectShortName">readdata[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/branch_taken" type="logic">
+      <obj_property name="ElementShortName">branch_taken</obj_property>
+      <obj_property name="ObjectShortName">branch_taken</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/mem_wb_regwrite" type="logic">
+      <obj_property name="ElementShortName">mem_wb_regwrite</obj_property>
+      <obj_property name="ObjectShortName">mem_wb_regwrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/mem_wb_memtoreg" type="logic">
+      <obj_property name="ElementShortName">mem_wb_memtoreg</obj_property>
+      <obj_property name="ObjectShortName">mem_wb_memtoreg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/mem_wb_rd" type="array">
+      <obj_property name="ElementShortName">mem_wb_rd[4:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_wb_rd[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/mem_wb_readdata" type="array">
+      <obj_property name="ElementShortName">mem_wb_readdata[63:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_wb_readdata[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/mem_wb_alu_result" type="array">
+      <obj_property name="ElementShortName">mem_wb_alu_result[63:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_wb_alu_result[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/writedata" type="array">
+      <obj_property name="ElementShortName">writedata[63:0]</obj_property>
+      <obj_property name="ObjectShortName">writedata[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/mem_w0" type="array">
+      <obj_property name="ElementShortName">mem_w0[63:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_w0[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/mem_w1" type="array">
+      <obj_property name="ElementShortName">mem_w1[63:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_w1[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/mem_w2" type="array">
+      <obj_property name="ElementShortName">mem_w2[63:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_w2[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/mem_w3" type="array">
+      <obj_property name="ElementShortName">mem_w3[63:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_w3[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/mem_w4" type="array">
+      <obj_property name="ElementShortName">mem_w4[63:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_w4[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/mem_w5" type="array">
+      <obj_property name="ElementShortName">mem_w5[63:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_w5[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/mem_w6" type="array">
+      <obj_property name="ElementShortName">mem_w6[63:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_w6[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/reg_x0" type="array">
+      <obj_property name="ElementShortName">reg_x0[63:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_x0[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/reg_x1" type="array">
+      <obj_property name="ElementShortName">reg_x1[63:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_x1[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/reg_x2" type="array">
+      <obj_property name="ElementShortName">reg_x2[63:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_x2[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/reg_x3" type="array">
+      <obj_property name="ElementShortName">reg_x3[63:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_x3[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/reg_x4" type="array">
+      <obj_property name="ElementShortName">reg_x4[63:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_x4[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/reg_x5" type="array">
+      <obj_property name="ElementShortName">reg_x5[63:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_x5[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/reg_x6" type="array">
+      <obj_property name="ElementShortName">reg_x6[63:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_x6[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/reg_x7" type="array">
+      <obj_property name="ElementShortName">reg_x7[63:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_x7[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/reg_x8" type="array">
+      <obj_property name="ElementShortName">reg_x8[63:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_x8[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/reg_x9" type="array">
+      <obj_property name="ElementShortName">reg_x9[63:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_x9[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/reg_x10" type="array">
+      <obj_property name="ElementShortName">reg_x10[63:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_x10[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/reg_x13" type="array">
+      <obj_property name="ElementShortName">reg_x13[63:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_x13[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/reg_x14" type="array">
+      <obj_property name="ElementShortName">reg_x14[63:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_x14[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/reg_x15" type="array">
+      <obj_property name="ElementShortName">reg_x15[63:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_x15[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/reg_x22" type="array">
+      <obj_property name="ElementShortName">reg_x22[63:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_x22[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/reg_x30" type="array">
+      <obj_property name="ElementShortName">reg_x30[63:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_x30[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/RISC_V_PIPELINED_tb/reg_x31" type="array">
+      <obj_property name="ElementShortName">reg_x31[63:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_x31[63:0]</obj_property>
+   </wvobject>
+</wave_config>
