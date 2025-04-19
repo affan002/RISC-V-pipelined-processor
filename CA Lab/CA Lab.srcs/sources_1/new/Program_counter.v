@@ -21,7 +21,7 @@
 
 
 module Program_Counter(
-input clk, reset,
+input clk, reset, PC_Write,
 input [63:0] PC_In,
 output reg [63:0] PC_Out
     );
@@ -31,7 +31,8 @@ output reg [63:0] PC_Out
         
         if (reset == 1'b1)
             PC_Out <= 64'b0;
-        
+        else if (PC_Write==1'b0)
+            PC_Out <= PC_Out;
         else
             PC_Out <= PC_In;
         

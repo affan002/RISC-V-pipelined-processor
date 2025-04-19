@@ -39,15 +39,19 @@ module RISC_V_Processor_Pipelined(
     // Checking Data Memory wires
     wire [63:0] w0, w1, w2, w3, w4, w5, w6;
     
-    // // Checking Register File wires
-    // wire [63:0] reg1, reg2, reg3;
+    // forwardin_unit wires 
+    wire [1:0] ForwardA, ForwardB;
+    wire [63:0] ForwardA_out, ForwardB_out;
+
+    //Hazard detection unit wires 
+    wire IF_ID_Write, PC_Write, control_mux_selector_bit;
     
     // IF -----------
     
     Adder FOURADDER(64'd4, PC_out, Out1);
 //  mux BRANCH(Out1, EX_MEM_Adder_out, (Branch & BranchSelect), PC_in);   // this seems wrong  
     mux branch_mux(Out1, EX_MEM_Adder_out, (EX_MEM_Branch & EX_MEM_Zero), PC_in);
-    Program_Counter Program_count(clk, reset, PC_in, PC_out);
+    Program_Counter Program_count(clk, reset,PC_Write, PC_in, PC_out);
     Instruction_Memory Instr_mem(PC_out, Instruction); 
     
 
@@ -58,6 +62,7 @@ module RISC_V_Processor_Pipelined(
     .reset(reset),
     .Instr(Instruction),
     .PC_OUT_IN(PC_out),
+    .IF_ID_Write(IF_ID_Write),
     .IF_ID_instruction_out(IF_ID_Instruction),
     .IF_ID_pc_out(IF_ID_PC_out)
     );
@@ -65,8 +70,11 @@ module RISC_V_Processor_Pipelined(
     // ID -----------   
     assign Funct = {IF_ID_Instruction[30],IF_ID_Instruction[14:12]};
     instruction_parser Instr_pars(IF_ID_Instruction, opcode, RD, func3, RS1, RS2, func7);
+
+    Hazard_detection_unit HazardD(RS1, RS2, ID_EX_RD, ID_EX_MemRead, IF_ID_Write, PC_Write, control_mux_selector_bit);
+
     immediate_data_extractor Imm_gen(IF_ID_Instruction, ImmData);
-    control_unit conrol_unit(opcode, Branch, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc, RegWrite);
+    control_unit conrol_unit(opcode, control_mux_selector_bit, Branch, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc, RegWrite);
     registerFile Registers(WriteData, RS1, RS2, MEM_WB_RD, MEM_WB_RegWrite, clk, reset, ReadData1, ReadData2);
     //----------
 
@@ -112,11 +120,16 @@ module RISC_V_Processor_Pipelined(
 
                     
     // EXE -----------------
+    forwarding_unit f_unit(EX_MEM_RD, MEM_WB_RD, ID_EX_RS1, ID_EX_RS2, EX_MEM_RegWrite, MEM_WB_RegWrite, ForwardA, ForwardB);
+    mux_3to1 mux_ForwardA(ID_EX_ReadData1, WriteData, EX_MEM_ALU_Result, ForwardA, ForwardA_out);
+    mux_3to1 mux_ForwardB(ID_EX_ReadData2, WriteData, EX_MEM_ALU_Result, ForwardB, ForwardB_out);
+    
+
     assign shifted_data = ID_EX_ImmData << 1;
     Adder BRANCHADDER(ID_EX_PC_out, shifted_data, Adder_out); 
-    mux MuxALUSrc(ID_EX_ReadData2, ID_EX_ImmData, ID_EX_ALUSrc, Data_Out);
+    mux MuxALUSrc(ForwardB_out, ID_EX_ImmData, ID_EX_ALUSrc, Data_Out); 
     ALU_control ALUC(ID_EX_ALUOp, ID_EX_Funct, Operation);
-    ALU_64_bit ALU(ID_EX_ReadData1, Data_Out, Operation, ALU_Result, Zero);
+    ALU_64_bit ALU(ForwardA_out, Data_Out, Operation, ALU_Result, Zero);
     Branch_unit Branch_decision(ID_EX_Funct[2:0], ID_EX_ReadData1, ID_EX_ReadData2, BranchSelect);
     // ----------------
 

@@ -23,7 +23,7 @@ module registerFile(
 
    
     
-    always @(posedge Clk)
+    always @(negedge Clk)
     begin
         if (RegWrite && RD != 5'b00000)
             array[RD] <= WriteData;

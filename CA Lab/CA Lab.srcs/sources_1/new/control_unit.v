@@ -3,6 +3,7 @@
 
 module control_unit(
     input [6:0] Opcode,
+    input control_mux_selector_bit,
     output reg Branch,
     output reg MemRead,
     output reg MemtoReg,
@@ -48,7 +49,7 @@ module control_unit(
             Branch = 1;
             ALUOp = 2'b01;
         end
-        else if (Opcode==7'b0010011) begin //tentative implementation for addi
+        else if (Opcode==7'b0010011) begin // addi
             ALUSrc = 1;
             MemtoReg = 0;
             RegWrite = 1;
@@ -57,7 +58,7 @@ module control_unit(
             Branch = 0;
             ALUOp = 2'b00;
         end
-        else begin // the default case should be used in stalls too 
+        else if (control_mux_selector_bit==1'b1) begin 
             ALUSrc = 0;
             MemtoReg = 0;
             RegWrite = 0;

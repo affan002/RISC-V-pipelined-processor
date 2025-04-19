@@ -63,11 +63,10 @@ module Instruction_Memory(
             //{InstructionMemory[115], InstructionMemory[114], InstructionMemory[113], InstructionMemory[112]} = 32'hf8000ee3; //29
             //{InstructionMemory[119], InstructionMemory[118], InstructionMemory[117], InstructionMemory[116]} = 32'h00000013; //30
             
-            {InstructionMemory[3], InstructionMemory[2], InstructionMemory[1], InstructionMemory[0]} = 32'h00211093;
-//1
-//            {InstructionMemory[7], InstructionMemory[6], InstructionMemory[5], InstructionMemory[4]} = 32'h01400113; //2
-//            {InstructionMemory[11], InstructionMemory[10], InstructionMemory[9], InstructionMemory[8]} = 32'h00500193; //3
-//            {InstructionMemory[15], InstructionMemory[14], InstructionMemory[13], InstructionMemory[12]} = 32'h00f00213; //4
+            {InstructionMemory[3], InstructionMemory[2], InstructionMemory[1], InstructionMemory[0]} = 32'h10002083; //1
+        {InstructionMemory[7], InstructionMemory[6], InstructionMemory[5], InstructionMemory[4]} = 32'h002081b3; //2
+
+
         end
        
        
