@@ -130,7 +130,7 @@ module RISC_V_Processor_Pipelined(
     mux MuxALUSrc(ForwardB_out, ID_EX_ImmData, ID_EX_ALUSrc, Data_Out); 
     ALU_control ALUC(ID_EX_ALUOp, ID_EX_Funct, Operation);
     ALU_64_bit ALU(ForwardA_out, Data_Out, Operation, ALU_Result, Zero);
-    Branch_unit Branch_decision(ID_EX_Funct[2:0], ID_EX_ReadData1, ID_EX_ReadData2, BranchSelect);
+    Branch_unit Branch_decision(ID_EX_Funct[2:0], ForwardA_out, Data_Out, BranchSelect);
     // ----------------
 
 
@@ -190,4 +190,6 @@ module RISC_V_Processor_Pipelined(
     // WB
     mux WB_mux(MEM_WB_ALU_Result, MEM_WB_ReadData, MEM_WB_MemtoReg, WriteData);
 
+
+    //updating repo
 endmodule

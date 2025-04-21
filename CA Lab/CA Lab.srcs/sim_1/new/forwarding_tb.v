@@ -57,6 +57,7 @@ module forwarding_tb();
     wire [63:0] reg_x2 = uut.Registers.array[2];
     wire [63:0] reg_x3 = uut.Registers.array[3];
     wire [63:0] reg_x4 = uut.Registers.array[4];
+    wire [63:0] reg_x5 = uut.Registers.array[5];
     
     // Instruction decoding in ID stage
     wire [6:0] opcode = uut.opcode;
@@ -106,5 +107,16 @@ module forwarding_tb();
     wire hazard_control_mux = uut.control_mux_selector_bit;
     wire PC_Write = uut.PC_Write;
     wire IF_ID_Write = uut.IF_ID_Write;
+
+    // -------data mem
+    
+    // Data memory monitoring
+    wire [63:0] mem_w0 = uut.w0;
+    wire [63:0] mem_w1 = uut.w1;
+    wire [63:0] mem_w2 = uut.w2;
+    wire [63:0] mem_w3 = uut.w3;
+    wire [63:0] mem_w4 = uut.w4;
+    wire [63:0] mem_w5 = uut.w5;
+    wire [63:0] mem_w6 = uut.w6;
    
 endmodule

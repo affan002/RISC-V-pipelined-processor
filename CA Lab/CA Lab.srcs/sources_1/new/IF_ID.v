@@ -21,7 +21,7 @@
 
 
 module IF_ID(
-input clk, reset,
+input clk, reset, 
     input [31:0] Instr,
     input [63:0] PC_OUT_IN,
     input IF_ID_Write,

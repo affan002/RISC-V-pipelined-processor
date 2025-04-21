@@ -1,2 +1,14 @@
 Vivado Simulator 2020.1
 Time resolution is 1 ps
+Final memory state:
+Memory[0] =   0
+Memory[8] =   0
+Memory[16] =   0
+Memory[24] =   0
+Memory[32] =   0
+Memory[40] =   0
+Memory[48] =   0
+Memory[56] =   0
+Memory[64] =   0
+Memory[72] =   0
+$finish called at time : 5020 ns : File "C:/Users/Noman Traders/Desktop/habib/CA/RISC-V-pipelined-processor/task_1/simulation/RISC_V_tb.v" Line 41

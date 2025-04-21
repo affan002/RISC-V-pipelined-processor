@@ -20,15 +20,14 @@ module Data_Memory(
         for (i = 0; i < 512; i = i + 1)
             DataMemory[i] = 0;
         // Changed to 4-byte spacing (32-bit words) starting at byte 256
-        
-        // commented because trying to initialize array using assembly code
-//        DataMemory[256] = 7;  // First element (7)
-//        DataMemory[260] = 6;  // Second element (6)
-//        DataMemory[264] = 5;  // Third element (5)
-//        DataMemory[268] = 4;  // Fourth element (4)
-//        DataMemory[272] = 3;  // Fifth element (3)
-//        DataMemory[276] = 2;  // Sixth element (2)
-//        DataMemory[280] = 1;  // Seventh element (1)
+
+       DataMemory[256] = 7;  // First element (7)
+       DataMemory[260] = 6;  // Second element (6)
+       DataMemory[264] = 5;  // Third element (5)
+       DataMemory[268] = 4;  // Fourth element (4)
+       DataMemory[272] = 3;  // Fifth element (3)
+       DataMemory[276] = 2;  // Sixth element (2)
+       DataMemory[280] = 1;  // Seventh element (1)
     end
     
     

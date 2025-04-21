@@ -30,8 +30,8 @@ module mux_3to1(
     always @(*) begin
         case(sel)
             2'b00: out = a;    // No forwarding, use original value
-            2'b01: out = b;    // Forward from EX/MEM stage
-            2'b10: out = c;    // Forward from MEM/WB stage
+            2'b01: out = b;   
+            2'b10: out = c;   
             default: out = a;  // Default to original value
         endcase
     end 
