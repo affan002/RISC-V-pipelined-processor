@@ -31,6 +31,8 @@ module forwarding_tb();
         .reset(reset)
     );
     
+//    RISC_V_Pipelined_flushing uut(clk,reset);
+    
     // Clock generation
     initial begin
         clk = 0;
@@ -48,6 +50,7 @@ module forwarding_tb();
         
     end
     
+    
     // General processor state
     wire [63:0] pc_out = uut.PC_out;
     wire [31:0] instruction = uut.Instruction;
@@ -58,6 +61,15 @@ module forwarding_tb();
     wire [63:0] reg_x3 = uut.Registers.array[3];
     wire [63:0] reg_x4 = uut.Registers.array[4];
     wire [63:0] reg_x5 = uut.Registers.array[5];
+    
+    // Data memory monitoring
+    wire [63:0] mem_w0 = uut.w0;
+    wire [63:0] mem_w1 = uut.w1;
+    wire [63:0] mem_w2 = uut.w2;
+    wire [63:0] mem_w3 = uut.w3;
+    wire [63:0] mem_w4 = uut.w4;
+    wire [63:0] mem_w5 = uut.w5;
+    wire [63:0] mem_w6 = uut.w6;
     
     // Instruction decoding in ID stage
     wire [6:0] opcode = uut.opcode;
@@ -110,13 +122,6 @@ module forwarding_tb();
 
     // -------data mem
     
-    // Data memory monitoring
-    wire [63:0] mem_w0 = uut.w0;
-    wire [63:0] mem_w1 = uut.w1;
-    wire [63:0] mem_w2 = uut.w2;
-    wire [63:0] mem_w3 = uut.w3;
-    wire [63:0] mem_w4 = uut.w4;
-    wire [63:0] mem_w5 = uut.w5;
-    wire [63:0] mem_w6 = uut.w6;
+    
    
 endmodule

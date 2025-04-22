@@ -21,13 +21,13 @@ module Data_Memory(
             DataMemory[i] = 0;
         // Changed to 4-byte spacing (32-bit words) starting at byte 256
 
-       DataMemory[256] = 7;  // First element (7)
-       DataMemory[260] = 6;  // Second element (6)
-       DataMemory[264] = 5;  // Third element (5)
-       DataMemory[268] = 4;  // Fourth element (4)
-       DataMemory[272] = 3;  // Fifth element (3)
-       DataMemory[276] = 2;  // Sixth element (2)
-       DataMemory[280] = 1;  // Seventh element (1)
+       DataMemory[256] = 44;  // First element (7)
+       DataMemory[260] =88;  // Second element (6)
+       DataMemory[264] = 79;  // Third element (5)
+       DataMemory[268] = 3;  // Fourth element (4)
+       DataMemory[272] = 79;  // Fifth element (3)
+       DataMemory[276] = 1;  // Sixth element (2)
+       DataMemory[280] = 8;  // Seventh element (1)
     end
     
     

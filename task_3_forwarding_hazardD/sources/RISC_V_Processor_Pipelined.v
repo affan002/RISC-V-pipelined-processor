@@ -3,6 +3,7 @@ module RISC_V_Processor_Pipelined(
     input clk,
     input reset
 );
+
 //testing
     // wires same as single cucle
     wire [63:0] PC_in, PC_out, ReadData, ReadData1, ReadData2, WriteData, ImmData, ALU_Result; 
